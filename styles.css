@@ -21,8 +21,26 @@ body {
 }
 
 .calculator-container { 
-    background-color: grey;
+    display: grid;
+    grid-template: repeat(6, 1fr) / repeat(4, 1fr);
+    background-color: rgb(49, 45, 45);
     width: 900px;
     height: 1000px;
     border-radius: 25px;
+    gap: 20px;
+    padding: 20px;
 }
+
+.calculator-container * {
+    background-color: darkgrey;
+     border-radius: 25px;
+}
+
+/* 4x6 grid */
+.calculator-display {
+    grid-row: 1 / 2;
+    grid-column: 1 / 5;
+}
+
+
+
