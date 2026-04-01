@@ -52,7 +52,6 @@ body {
     padding: 10px;
     font-size: 100px;
     justify-content: left;
-    
 }
 
 .calculator-delete {
@@ -115,17 +114,17 @@ body {
     
 }
 
-.calculator-times {
+.calculator-multiply {
     grid-row: 4 / 5;
     grid-column: 4 / 5;
 }
 
-.calculator-minus {
+.calculator-subtract {
     grid-row: 5 / 6;
     grid-column: 4 / 5;
 }
 
-.calculator-plus {
+.calculator-add {
     grid-row: 6 / 7;
     grid-column: 4 / 5;
 }
