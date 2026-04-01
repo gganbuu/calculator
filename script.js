@@ -24,27 +24,54 @@ calculator.addEventListener("click", (e) => {
     if (action == "delete") {
         display.textContent = display.textContent.slice(0,display.textContent.length-1);
     }
-
+    
+    if (action == "equals") {
+        const result = operate(display.textContent)
+        if (result == undefined) {
+            alert("No operator or too many operators!")
+        } else { display.textContent += ` = ${result}`}
+    }
 
 })
 
+    
+
+    
+
+
+    // return number1, number2 and operator
+    
+
+
 // calculation logic
-const operate = (number1, number2, operator) => {   
+const operate = (string) => {   
+    const symbolFilter = ['+', '-', '×', '÷'];
+    
+    const operator = symbolFilter.find(op => string.includes(op));
+
+    // If there are multiple operators or no operator, return an error
+    if (!operator || (string.match(new RegExp(`\\${operator}`, 'g')) || []).length > 1) {
+        return undefined;
+    }
+
+    // Split the string based on the operator
+    const [number1, number2] = string.split(operator);
+    
     switch (operator) {
         case "+":
             return add(number1, number2);
         case "-":
             return subtract(number1, number2);
-        case "/":
-            return divide(number1, number2);
-        case "*":
+        case "×":
             return multiply(number1, number2);
+        case "÷":
+            return divide(number1, number2);
 
     }
 } 
 
 const add = (a,b) => {
-    return a+b;
+    return Number(a)+Number(b);
 };
 
 const subtract = (a,b) => {
