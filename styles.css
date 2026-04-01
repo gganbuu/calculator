@@ -44,6 +44,10 @@ body {
     font-size: 40px;
 }
 
+.calculator-container > *:not(:first-child):hover {
+    background-color: rgb(116, 100, 100)
+}
+
 
 .calculator-display {
     grid-row: 1 / 2;
@@ -129,6 +133,15 @@ body {
     grid-column: 4 / 5;
 }
 
+.calculator-dot {
+    grid-row: 6 / 7;
+    grid-column: 1 / 2;
 
+}
+
+.calculator-equals {
+    grid-row: 6 / 7;
+    grid-column: 3 / 4;
+}
 
 

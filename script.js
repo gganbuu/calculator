@@ -1,3 +1,36 @@
+// display declaration
+const display = document.querySelector(".calculator.display")
+
+// button declaration
+
+const deleteBtn = document.querySelector(".calculator-delete")
+const clearAllBtn = document.querySelector(".calculator-clearall")
+
+const sevenBtn = document.querySelector(".calculator-7")
+const eightBtn = document.querySelector(".calculator-8")
+const nineBtn = document.querySelector(".calculator-9")
+const fourBtn = document.querySelector(".calculator-4")
+const fiveBtn = document.querySelector(".calculator-5")
+const sixBtn = document.querySelector(".calculator-6")
+const oneBtn = document.querySelector(".calculator-1")
+const twoBtn = document.querySelector(".calculator-2")
+const threeBtn = document.querySelector(".calculator-3")
+
+const addBtn = document.querySelector(".calculator-add")
+const subtractBtn = document.querySelector(".calculator-subtract")
+const multiplyBtn = document.querySelector(".calculator-multiply")
+const divideBtn = document.querySelector(".calculator-divide")
+const zeroBtn = document.querySelector(".calculator-0")
+const dotBtn = document.querySelector(".calculator-dot")
+const equalsBtn = document.querySelector(".calculator-equals")
+
+// event listeners
+// oneBtn.addEventListener("click", (e) => {
+//     display.textContent 
+// })
+
+
+// calculation logic
 const operate = (number1, number2, operator) => {   
     switch (operator) {
         case "+":
@@ -5,7 +38,7 @@ const operate = (number1, number2, operator) => {
         case "-":
             return subtract(number1, number2);
         case "/":
-            return divide(number1, number2);
+            return ide(number1, number2);
         case "*":
             return multiply(number1, number2);
 
@@ -20,10 +53,11 @@ const subtract = (a,b) => {
 	return a-b; 
 };
 
-const divide = (a,b) => {
+const ide = (a,b) => {
 	return a/b; 
 };
 
 const multiply = (a,b) => {
 	return a*b; 
 };
+
