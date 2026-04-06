@@ -5,6 +5,9 @@ const display = document.querySelector(".calculator-display");
 const calculator = document.querySelector(".calculator-container");
 
 // button logic
+let number1 = null;
+let number2 = null;
+let operator = null;
 calculator.addEventListener("click", (e) => {
     const target = e.target;
 
@@ -19,19 +22,42 @@ calculator.addEventListener("click", (e) => {
 
     if (action == "clear") {
         display.textContent = "";
+        number1 = null;
+        number2 = null;
+        operator = null;
     }
 
     if (action == "delete") {
-        display.textContent = display.textContent.slice(0,display.textContent.length-1);
-    }
-    
-    if (action == "equals") {
-        const result = operate(display.textContent)
-        if (result == undefined) {
-            alert("No operator or too many operators!")
-        } else { display.textContent += ` = ${result}`}
+        display.textContent = display.textContent.slice(0,-1);
     }
 
+    if (action == "equals") {
+        if (number1 !== null && operator !== null) {
+            number2 = display.textContent
+            display.textContent = String(operate(number1, number2, operator))
+            number1 = display.textContent
+            number2 = null;
+            operator = null;
+        } 
+
+    }
+    
+    if (["+", "-", "×", "÷"].includes(action)) {
+        if (operator == null) {
+            number1 = Number(display.textContent)
+            operator = action
+            display.textContent = ""
+        } else if (operator !== null && number1 !== null) {
+            number2 = Number(display.textContent)
+            display.textContent = operate(number1, number2, operator)
+            number1 = display.textContent
+            number2 = null
+            operator == null
+        } else if (number1 !== null && number2 == null && operator == null) {
+            operator = action
+            display.textContent = ""
+        }
+    }
 })
 
     
@@ -44,19 +70,7 @@ calculator.addEventListener("click", (e) => {
 
 
 // calculation logic
-const operate = (string) => {   
-    const symbolFilter = ['+', '-', '×', '÷'];
-    
-    const operator = symbolFilter.find(op => string.includes(op));
-
-    // If there are multiple operators or no operator, return an error
-    if (!operator || (string.match(new RegExp(`\\${operator}`, 'g')) || []).length > 1) {
-        return undefined;
-    }
-
-    // Split the string based on the operator
-    const [number1, number2] = string.split(operator);
-    
+const operate = (number1, number2, operator) => {       
     switch (operator) {
         case "+":
             return add(number1, number2);
